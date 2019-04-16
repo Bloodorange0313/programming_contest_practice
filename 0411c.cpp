@@ -12,53 +12,39 @@ bool visited[105];
 
 bool t[105][105];
 
+long long int dp[105];
 
 void bfs(long long int s){
   for(int i = 0; i < n; ++i){
     visited[i] = false;
+    
   }
   visited[s] = true;
   Q.push(s);
-  long long int cnt = 0;
+  long long int cnt = 1;
   long long int depth = 0;
-  //long long int depth1 = 0; // 本当の深さ
-
+  dp[s] = 0;
   while(!Q.empty() && depth == 0){
     s = Q.front();
-    //cout << s << endl;
     Q.pop();
-    long long int cnt1 = 0;
-    long long int tmp;
-    tmp = cnt;
     for(int j = 0; j < m; ++j){
+      
       if(t[s][j] == true && visited[j] == false){
         visited[j] = true;
         Q.push(j);
+        dp[j] = dp[s] + 1;
         
-        if(cnt1 == 1){
-          cnt++;
-          cnt++;
-        }else if(cnt1 > 1){
-          cnt++;
-        }
-        //cout << j << endl;
-        cnt1++; // 並んでいるものがある
+        cout << j << endl;
         if(j == b){
           depth++;
         }
+        
+        
       }
     }
-    //depth1++;
-    if(cnt1 > 0){
-      cnt1++;
-    }
-    if(depth > 0){
-      cnt = tmp;
-      cnt1 = 0;
-    }
-    
   }
-  cout << cnt << endl;
+  
+  cout << dp[b] << endl;
 }
 
 
