@@ -1,5 +1,6 @@
 #include<iostream>
 #include<queue>
+#include<vector>
 
 using namespace std;
 
@@ -10,6 +11,7 @@ long long int x[205], y[205];
 queue<long long int> Q;
 bool visited[105];
 
+vector<int>V[205];
 bool t[105][105];
 
 long long int dp[105];
@@ -22,9 +24,9 @@ void bfs(long long int s){
   visited[s] = true;
   Q.push(s);
   long long int cnt = 1;
-  long long int depth = 0;
+  long long int judge = 0;
   dp[s] = 0;
-  while(!Q.empty() && depth == 0){
+  while(!Q.empty() && judge == 0){
     s = Q.front();
     Q.pop();
     for(int j = 0; j < m; ++j){
@@ -33,18 +35,20 @@ void bfs(long long int s){
         visited[j] = true;
         Q.push(j);
         dp[j] = dp[s] + 1;
-        
-        cout << j << endl;
+        V[dp[j]].push_back(j);
+        //cout << j << endl;
         if(j == b){
-          depth++;
+          judge++;
         }
-        
-        
       }
     }
   }
+  for(int i = 1; i < dp[b]; ++i){
+    cnt *= V[i].size();
+    //cout << V[i].size() << endl;
+  }
   
-  cout << dp[b] << endl;
+  cout << cnt << endl;
 }
 
 
