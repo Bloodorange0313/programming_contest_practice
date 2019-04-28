@@ -9,17 +9,16 @@ long long int a , b;
 long long int x[205], y[205];
 
 queue<long long int> Q;
-bool visited[105];
+bool visited[205];
 
 vector<int>V[205];
-bool t[105][105];
+bool t[205][205];
 
-long long int dp[105];
+long long int dp[205];
 
 void bfs(long long int s){
   for(int i = 0; i < n; ++i){
     visited[i] = false;
-    
   }
   visited[s] = true;
   Q.push(s);
@@ -48,7 +47,7 @@ void bfs(long long int s){
     //cout << V[i].size() << endl;
   }
   
-  cout << cnt << endl;
+  cout << cnt % 1000000007 << endl;
 }
 
 
@@ -61,6 +60,7 @@ int main(){
   for(int i = 0; i < m; ++i){
     for(int j = i + 1; j < m; ++j){
       t[i][j] = false;
+      t[j][i] = false;
     }
   }
   for(int i = 0; i < m; ++i){
