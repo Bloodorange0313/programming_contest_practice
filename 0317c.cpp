@@ -2,6 +2,7 @@
 #include<vector>
 #include<algorithm>
 #include<set>
+#include<map>
 
 using namespace std;
 
@@ -9,28 +10,30 @@ int n;
 int a[105], b[105], c[105], d[105];
 vector<pair<int, int> >V, W;
 vector<int> S;
+int x[105], y[105];
 
 void solver(){
   sort(V.begin(), V.end());
   sort(W.begin(), W.end());
-  //int cnt = 0;
-  
-  for(int i = n - 1; i > -1; --i){
+  int cnt = 0;
+  for(int i = 0; i < n; ++i){
+    x[i] = -1;
+    y[i] = -1;
+    //cout << x[i] << endl;
+  }
+  for(int i = 0; i < n; ++i){
     for(int j = 0; j < n; ++j){
-      if(V[i].first < W[j].first && V[i].second < W[j].second){
-        //cnt++;
-        //cout<< V[i].first << " " << W[j].first << endl;
-        auto result = find(S.begin(), S.end(), V[i].first);
-        if(result != S.end()){
-          S.push_back(V[i].first);
-          cout << V[i].first << " " << W[j].first << endl;
-          break;
-        }
-        
+      if(V[i].first < W[j].first && V[i].second < W[j].second /*&& x[i] == -1 */&& y[j] == -1){
+        cnt++;
+        //x[i] = 1;
+        y[j] = 1;
+        //cout << V[i].first << endl;
+        //cout << x[i] << endl;
+        break;
       }
     }
   }
-  cout << S.size() << endl;
+  cout << cnt << endl;
 }
 
 int main(){
