@@ -15,12 +15,12 @@ int main(){
   int sum = y;
   tmp1 = sum / 1000;
   //cout << tmp1 << endl;
-  for(int i = 0; i < tmp1; ++i){
+  for(int i = 0; i <= tmp1; ++i){
     //x = i;
     sum1 = sum - i * 1000;
     //cout << sum1 << endl;
     tmp2 = sum1 / 5000;
-    for(int j = 0; j < tmp2; ++j){
+    for(int j = 0; j <= tmp2; ++j){
       sum2 = sum1 - j * 5000;
       int k = n - i - j;
       if(sum2 - k*10000 == 0){
