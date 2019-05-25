@@ -3,9 +3,9 @@
 
 using namespace std;
 
-double n, k;
+float n, k;
 int cnt[100005];
-double answer = 0.00000000000;
+float answer = 0.00000000000;
 
 int main(){
   cin >> n >> k;
@@ -18,7 +18,7 @@ int main(){
     }
   }
   for(int i = 1; i <= n; ++i){
-    answer +=  pow(0.5, cnt[i]);
+    answer +=  pow(0.50000000000, cnt[i]);
     //cout << cnt[i] << endl;
     //cout << pow((1 / 2), cnt[i]) << endl;
     //cout << (1 / 2.00000000000) << endl;
