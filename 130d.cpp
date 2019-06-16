@@ -8,32 +8,34 @@ using namespace std;
  
 long long inf = 1000000007;
  
-int n, k;
-int a[100005];
+long long n, k;
+long long a[100005];
 int cnt[100005];
  
  
 int main(){
   cin >> n >> k;
-  for(int i = 1; i < n + 1; ++i){
+  for(int i = 0; i < n; ++i){
     cin >> a[i];
-    cnt[i] = n;
   }
-  long long tmp = 0;
-  int l[n][n];
-  for(int i = 1; i < n + 1; ++i){
-    for(int j = i; j < n + 1; ++j){
-      if(i == j){
-        l[i][j] = a[i];
+  long long sum = 0;
+  long long ans = 0;
+  int r = 0;
+  for(int i = 0; i < n; ++i){
+    while(sum < k){
+      if(r == n){
+        break;
       }else{
-        l[i][j] = a[j] + l[i][j - 1];
+        sum += a[r];
+        r++;
       }
-      if(l[i][j] >= k){
-        tmp++;
-      }
-      //cout << l[i][j] << endl;
     }
+    if(sum < k){
+      break;
+    }
+    ans += n - r + 1;
+    sum -= a[i];
   }
   
-  cout << tmp << endl;
+  cout << ans << endl;
 }
