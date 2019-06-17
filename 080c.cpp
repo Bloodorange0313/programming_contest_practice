@@ -26,7 +26,7 @@ int main(){
     for(int i = 0; i < n; ++i){
       int c = 0;
       for ( int j =0; j <10; ++j){
-        if (( b >> j&1)&& f[i][j]) c ++;
+        if (( b >> j&1)&& f[i][j]) c ++; //&1は1ビット目を取り出すため
       }
       cc += p[i][c];
     }
