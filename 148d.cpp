@@ -11,7 +11,7 @@ void input(){
     cin >> a[i];
   }
 }
-
+  
 int solve(){
   int cnt = 0;
   int tmp = 1;
